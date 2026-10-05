@@ -21,6 +21,14 @@ Repositorio de materiales académicos de la Universidad Nacional de Loja.
 
 ## Presentaciones
 
+### Índice de contenidos
+
+1. **Conceptos fundamentales y abstracción**: TDA, encapsulamiento, clases ES6, campos privados e interfaces implícitas.
+2. **Memoria en JavaScript**: valores primitivos y objetos, referencias, `process.memoryUsage()` y herramientas de inspección.
+3. **Arreglos, conjuntos y registros**: `Array`, `TypedArray`, `Set`, `Map` y objetos.
+4. **Gestión de archivos**: lectura secuencial con streams y acceso aleatorio mediante offsets.
+5. **Persistencia de datos**: archivos JSON y binarios, `localStorage` e IndexedDB.
+
 - `presentaciones/index.html`: estructura del deck Reveal.js y carga de plugins.
 - `presentaciones/contenido.md`: contenido de las diapositivas técnicas; `---` separa slides horizontales y `--` crea slides verticales.
 - `presentaciones/css/custom-theme.css`: estilos institucionales, tipografía Montserrat y formato de las slides Markdown.
