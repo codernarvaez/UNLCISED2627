@@ -281,3 +281,251 @@ solicitud.onerror = () => console.error(solicitud.error);
 Usa IndexedDB para colecciones que requieren consultas, índices o transacciones. Ninguna API del navegador debe tratarse como sustituto de copias de seguridad del servidor.
 
 Referencias: [localStorage en MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) · [IndexedDB en MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API).
+
+---
+
+# 1.3.1 Listas simples enlazadas
+
+### Nodos y referencias
+
+Una **lista simple enlazada** es una secuencia de **nodos**. Cada nodo guarda un valor y una referencia al nodo siguiente; el último apunta a `null`.
+
+```text
+cabeza --> [ "A" | sig ] --> [ "B" | sig ] --> [ "C" | null ]
+```
+
+- JavaScript no tiene punteros explícitos: las **referencias a objetos** cumplen ese papel (diapositiva 1.1.2).
+- La lista conserva solo la **cabeza**; para llegar a otro nodo se recorre desde ahí.
+- Un nodo que deja de ser alcanzable desde la cabeza puede ser liberado por el recolector.
+
+--
+
+### Implementar ListaSimple
+
+Cada nodo es un registro con dos campos: `valor` y `siguiente`. La lista guarda la cabeza y la longitud en campos privados, igual que `Pila` oculta su arreglo.
+
+Guarda la clase como `lista-simple.js`; los métodos de las siguientes diapositivas se agregan dentro de ella.
+
+```js
+class ListaSimple {
+  #cabeza = null;
+  #longitud = 0;
+
+  agregarAlInicio(valor) {
+    this.#cabeza = { valor, siguiente: this.#cabeza };
+    this.#longitud++;
+  }
+
+  agregarAlFinal(valor) {
+    const nodo = { valor, siguiente: null };
+    if (!this.#cabeza) this.#cabeza = nodo;
+    else {
+      let actual = this.#cabeza;
+      while (actual.siguiente) actual = actual.siguiente;
+      actual.siguiente = nodo;
+    }
+    this.#longitud++;
+  }
+
+  *[Symbol.iterator]() {
+    for (let nodo = this.#cabeza; nodo; nodo = nodo.siguiente) {
+      yield nodo.valor;
+    }
+  }
+
+  get longitud() {
+    return this.#longitud;
+  }
+}
+
+module.exports = { ListaSimple };
+```
+
+--
+
+### Eliminar un nodo
+
+Eliminar es **reconectar**: el nodo anterior pasa a apuntar al siguiente del eliminado, que queda inalcanzable.
+
+```text
+antes:    [ "A" ] --> [ "B" ] --> [ "C" ]
+después:  [ "A" ] ------------> [ "C" ]     "B" ya no es alcanzable
+```
+
+```js
+  eliminarSi(predicado) {
+    if (!this.#cabeza) return false;
+    if (predicado(this.#cabeza.valor)) {
+      this.#cabeza = this.#cabeza.siguiente;
+      this.#longitud--;
+      return true;
+    }
+    let anterior = this.#cabeza;
+    while (anterior.siguiente && !predicado(anterior.siguiente.valor)) {
+      anterior = anterior.siguiente;
+    }
+    if (!anterior.siguiente) return false;
+    anterior.siguiente = anterior.siguiente.siguiente;
+    this.#longitud--;
+    return true;
+  }
+```
+
+--
+
+### Casos borde y uso
+
+```js
+const alumnos = new ListaSimple();
+alumnos.agregarAlFinal({ id: 1, nombre: "Ana" });
+alumnos.agregarAlFinal({ id: 2, nombre: "Luis" });
+alumnos.agregarAlFinal({ id: 3, nombre: "Eva" });
+
+console.log(alumnos.eliminarSi((a) => a.id === 2)); // true
+console.log(alumnos.eliminarSi((a) => a.id === 9)); // false
+console.log([...alumnos].map((a) => a.nombre));     // ["Ana", "Eva"]
+console.log(alumnos.longitud);                      // 2
+```
+
+- Cubre tres casos: lista **vacía**, eliminación de la **cabeza** y valor **inexistente**.
+- `eliminarSi` generaliza `eliminar(valor)`: basta pasar `(v) => v === valor`.
+- Con objetos, `===` exige la misma referencia; un predicado permite comparar por campo, como `id`.
+
+Referencia: [Protocolos de iteración en MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols).
+
+---
+
+# 1.3.2 Listas simples: operaciones, persistencia y pruebas
+
+### Buscar, insertar e invertir
+
+Se agregan dentro de `ListaSimple`.
+
+```js
+  buscar(predicado) {
+    for (let nodo = this.#cabeza; nodo; nodo = nodo.siguiente) {
+      if (predicado(nodo.valor)) return nodo.valor;
+    }
+    return undefined;
+  }
+
+  insertarEn(indice, valor) {
+    if (indice < 0 || indice > this.#longitud) {
+      throw new RangeError("Índice fuera de rango");
+    }
+    if (indice === 0) return this.agregarAlInicio(valor);
+    let anterior = this.#cabeza;
+    for (let i = 0; i < indice - 1; i++) anterior = anterior.siguiente;
+    anterior.siguiente = { valor, siguiente: anterior.siguiente };
+    this.#longitud++;
+  }
+
+  invertir() {
+    let anterior = null;
+    let actual = this.#cabeza;
+    while (actual) {
+      const siguiente = actual.siguiente;
+      actual.siguiente = anterior;
+      anterior = actual;
+      actual = siguiente;
+    }
+    this.#cabeza = anterior;
+  }
+```
+
+--
+
+### Convertir y persistir la lista
+
+`JSON.stringify(lista)` no guarda los campos privados. Para persistir, convierte la lista en un arreglo y reconstrúyela al leer.
+
+```js
+  toArray() {
+    return [...this];
+  }
+
+  static desde(valores) {
+    const arreglo = Array.from(valores);
+    const lista = new ListaSimple();
+    for (let i = arreglo.length - 1; i >= 0; i--) {
+      lista.agregarAlInicio(arreglo[i]);
+    }
+    return lista;
+  }
+```
+
+Guarda el ejemplo como `persistencia-lista.js` y ejecútalo con `node persistencia-lista.js`.
+
+```js
+const { readFile, writeFile } = require("node:fs/promises");
+const { ListaSimple } = require("./lista-simple");
+
+async function main() {
+  const alumnos = ListaSimple.desde([
+    { id: 1, nombre: "Ana" },
+    { id: 2, nombre: "Luis" }
+  ]);
+  await writeFile("alumnos.json", JSON.stringify(alumnos.toArray()));
+
+  const texto = await readFile("alumnos.json", "utf8");
+  const recuperada = ListaSimple.desde(JSON.parse(texto));
+  console.log(recuperada.buscar((a) => a.id === 2).nombre); // Luis
+}
+
+main().catch(console.error);
+```
+
+--
+
+### Verificar el contrato con pruebas
+
+Guarda las pruebas como `lista-simple.test.js` y ejecútalas con `node --test`.
+
+```js
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const { ListaSimple } = require("./lista-simple");
+
+test("conserva el orden y la longitud", () => {
+  const lista = new ListaSimple();
+  lista.agregarAlFinal("B");
+  lista.agregarAlInicio("A");
+  assert.deepEqual(lista.toArray(), ["A", "B"]);
+  assert.equal(lista.longitud, 2);
+});
+
+test("eliminarSi cubre cabeza, nodo intermedio e inexistente", () => {
+  const lista = ListaSimple.desde([1, 2, 3, 4]);
+  assert.equal(lista.eliminarSi((v) => v === 1), true);
+  assert.equal(lista.eliminarSi((v) => v === 3), true);
+  assert.equal(lista.eliminarSi((v) => v === 9), false);
+  assert.deepEqual(lista.toArray(), [2, 4]);
+});
+
+test("insertarEn rechaza índices fuera de rango", () => {
+  const lista = ListaSimple.desde(["A", "C"]);
+  lista.insertarEn(1, "B");
+  assert.deepEqual(lista.toArray(), ["A", "B", "C"]);
+  assert.throws(() => lista.insertarEn(9, "X"), RangeError);
+});
+```
+
+- Prueba el **comportamiento público** (orden, longitud, casos borde), no los campos privados.
+- Cada prueba debe fallar por una sola razón: así el error indica qué operación se rompió.
+
+--
+
+### Costo y criterios de uso
+
+| Operación | Costo (peor caso) | Motivo |
+| --- | --- | --- |
+| `agregarAlInicio` | O(1) | Solo cambia la cabeza |
+| `agregarAlFinal` | O(n) | Recorre hasta el último nodo |
+| `buscar`, `eliminarSi`, `insertarEn` | O(n) | Recorren desde la cabeza |
+| `invertir`, `toArray`, `desde` | O(n) | Visitan cada nodo una vez |
+
+- Prefiere la lista simple cuando predominan las inserciones y eliminaciones al inicio y el recorrido secuencial; prefiere `Array` cuando necesitas acceso directo por índice.
+- No asumas que una lista supera a un `Array` solo por su costo teórico: cada nodo es un objeto separado en el heap. Mide con datos representativos.
+- Una referencia al último nodo haría `agregarAlFinal` O(1), a cambio de mantenerla consistente al eliminar.
+
+Referencias: [Array.from() en MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) · [Test runner de Node.js](https://nodejs.org/api/test.html).
