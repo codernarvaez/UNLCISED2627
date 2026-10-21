@@ -3,103 +3,462 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plantilla de presentación institucional de la Universidad Nacional de Loja.">
-    <title>Presentación institucional | UNL</title>
+    <meta name="description" content="Estructura de Datos en JavaScript. Carrera de Computación, Universidad Nacional de Loja.">
+    <title>Estructura de Datos | UNL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/highlight/monokai.css">
     <link rel="stylesheet" href="css/custom-theme.css">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <!-- Portada: identificación institucional y título principal. -->
-        <section class="slide-frame cover-slide" data-background-color="#ffffff">
-          <header class="brand-header" aria-label="Universidad Nacional de Loja">
-            <span class="brand-rule"></span>
-            <img class="brand-logo" src="img/logounl.png" width="369" height="145" alt="Logotipo de la Universidad Nacional de Loja">
-            <span class="brand-rule"></span>
-          </header>
-          <div class="cover-content">
-            <p class="eyebrow">Universidad Nacional de Loja</p>
-            <h1>Estructura de<br><span>Datos</span></h1>
+        <section class="cover-manual" data-background-color="#e30613">
+          <img class="cover-logo" src="img/logounl-sobre-rojo.png" width="319" height="109" alt="Universidad Nacional de Loja">
+          <div class="cover-copy">
+            <h1>Estructura de<br>Datos</h1>
             <p class="cover-subtitle">Carrera de Computación</p>
-            <div class="cover-accent" aria-hidden="true"></div>
-            <p class="cover-meta">Loja, Ecuador <span>·</span> 2026</p>
+            <p class="cover-meta fragment fade-up">Periodo 2026-2027 · Loja, cristian.narvaez@unl.edu.ec</p>
           </div>
-          <div class="watermark-seal" aria-hidden="true"><span>UNIVERSIDAD NACIONAL DE LOJA</span><b>UNL</b><small>1859</small></div>
-          <footer class="slide-footer"><span>Universidad Nacional de Loja</span><span class="page-number">01</span></footer>
+          <img class="cover-seal" src="img/sello-unl.png" alt="" width="109" height="109">
+          <aside class="notes">Buenos días. Esta sesión es de Estructura de Datos, Carrera de Computación, Universidad Nacional de Loja. El lenguaje de los ejemplos es JavaScript, y el objetivo no es memorizar una API: es entender el contrato de un dato, cómo se comparte en memoria y qué estructura conviene para cada operación. La portada ya muestra el título y la carrera. Con la flecha abajo aparece el año. A la derecha está el mapa de la sesión.</aside>
         </section>
 
-        <!-- Dos columnas: texto introductorio junto a una tarjeta destacada. -->
-        <section class="slide-frame content-slide" data-background-color="#ffffff">
-          <header class="brand-header" aria-label="Universidad Nacional de Loja">
-            <span class="brand-rule"></span>
-            <img class="brand-logo" src="img/logounl.png" width="369" height="145" alt="Logotipo de la Universidad Nacional de Loja">
-            <span class="brand-rule"></span>
-          </header>
-          <div class="section-ribbon"><h2>Una universidad, un propósito</h2></div>
-          <div class="two-column-layout">
-            <div class="prose-column">
-              <p>La Universidad Nacional de Loja forma profesionales y genera conocimiento al servicio del desarrollo sostenible de la sociedad.</p>
-              <p>Con raíces en el sur del Ecuador, proyecta una educación pública, plural y comprometida con las personas y su territorio.</p>
-              <p class="small-copy">Una comunidad que aprende, investiga e innova para abrir nuevas posibilidades.</p>
+        <section class="tech-slide index-slide" data-background-color="#ffffff">
+          <p class="index-banner">Índice</p>
+          <div class="index-toc">
+            <div class="index-group">
+              <h3>Conceptos fundamentales</h3>
+              <div class="index-row"><span>El TDA define el contrato</span><span class="index-page">4</span></div>
+              <div class="index-row"><span>Una pila que no expone su arreglo</span><span class="index-page">5</span></div>
+              <div class="index-row"><span>El contrato no exige la palabra class</span><span class="index-page">6</span></div>
             </div>
-            <aside class="identity-card">
-              <div class="card-mark" aria-hidden="true">UNL</div>
-              <p class="card-kicker">Nuestra esencia</p>
-              <h3>Conocimiento<br>con sentido</h3>
-              <div class="card-divider"></div>
-              <p>Excelencia académica<br>y compromiso social</p>
-            </aside>
+            <div class="index-group">
+              <h3>Memoria: valores y referencias</h3>
+              <div class="index-row"><span>Qué se copia al asignar</span><span class="index-page">8</span></div>
+              <div class="index-row"><span>El heap del proceso</span><span class="index-page">9</span></div>
+              <div class="index-row"><span>Cómo leer una medición</span><span class="index-page">10</span></div>
+            </div>
+            <div class="index-group">
+              <h3>Arreglos, conjuntos y registros</h3>
+              <div class="index-row"><span>Elegir la representación</span><span class="index-page">12</span></div>
+              <div class="index-row"><span>Cuatro estructuras en una escena</span><span class="index-page">13</span></div>
+              <div class="index-row"><span>Criterio de uso</span><span class="index-page">14</span></div>
+            </div>
+            <div class="index-group">
+              <h3>Archivos</h3>
+              <div class="index-row"><span>Lectura secuencial y por offset</span><span class="index-page">16</span></div>
+              <div class="index-row"><span>Stream y dieciséis bytes</span><span class="index-page">17</span></div>
+              <div class="index-row"><span>Índice y archivo</span><span class="index-page">18</span></div>
+            </div>
+            <div class="index-group">
+              <h3>Persistencia</h3>
+              <div class="index-row"><span>Dónde guardar el dato</span><span class="index-page">20</span></div>
+              <div class="index-row"><span>JSON y un entero binario</span><span class="index-page">21</span></div>
+              <div class="index-row"><span>localStorage e IndexedDB</span><span class="index-page">22</span></div>
+            </div>
           </div>
-          <div class="watermark-seal watermark-small" aria-hidden="true"><span>UNIVERSIDAD NACIONAL DE LOJA</span><b>UNL</b><small>1859</small></div>
-          <footer class="slide-footer"><span>Universidad Nacional de Loja</span><span class="page-number">02</span></footer>
-          <aside class="notes">Presenta la misión de la institución con una idea central: conocimiento que responde a las necesidades de su entorno.</aside>
+          <p class="index-footer">Estructura de Datos</p>
+          <aside class="notes">Esta lámina es el índice de la sesión, no un resumen. El número de la derecha es el de la diapositiva en el contador. Los saltos, del 6 al 8 o del 10 al 12, son las portadillas de cada bloque. Recórralo una vez: primero el contrato del dato, después la memoria, las colecciones, los archivos y la persistencia. No lea cada título. Diga a qué pregunta responde cada bloque y avance a la derecha.</aside>
         </section>
 
-        <!-- Métricas: cifras de impacto organizadas en una cuadrícula legible. -->
-        <section class="slide-frame metrics-slide" data-background-color="#ffffff">
-          <header class="brand-header" aria-label="Universidad Nacional de Loja">
-            <span class="brand-rule"></span>
-            <img class="brand-logo" src="img/logounl.png" width="369" height="145" alt="Logotipo de la Universidad Nacional de Loja">
-            <span class="brand-rule"></span>
-          </header>
-          <div class="section-ribbon"><h2>Una comunidad que crece</h2></div>
-          <p class="slide-intro">El impacto de la universidad se construye desde las personas, el conocimiento y el territorio.</p>
-          <div class="metrics-grid">
-            <article class="metric-item"><strong>5</strong><span>áreas académicas</span></article>
-            <article class="metric-item"><strong>+40</strong><span>programas de formación</span></article>
-            <article class="metric-item"><strong>1859</strong><span>año de fundación</span></article>
-          </div>
-          <p class="source-note">Cifras de ejemplo para personalizar con datos institucionales vigentes.</p>
-          <div class="watermark-seal watermark-small" aria-hidden="true"><span>UNIVERSIDAD NACIONAL DE LOJA</span><b>UNL</b><small>1859</small></div>
-          <footer class="slide-footer"><span>Universidad Nacional de Loja</span><span class="page-number">03</span></footer>
+        <section>
+          <section class="tech-slide section-break" data-background-color="#ffffff">
+            <h2>Conceptos<br>fundamentales</h2>
+            <p class="section-break-footer">Estructura de Datos</p>
+            <aside class="notes">Transición. Diga solo esto: un tipo de dato abstracto no es una clase. Es una promesa. Qué valores existen y qué operaciones están permitidas. Cómo se guarda por dentro queda escondido a propósito. Baje para ver el contrato de la pila y de la cola.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.1.1 · Contrato</p>
+            <h2>El TDA define el contrato</h2>
+            <div class="card-grid cols-2">
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Pila</p>
+                <h3 class="fragment highlight-red">LIFO</h3>
+                <p><code>push</code> <code>pop</code> <code>peek</code></p>
+                <p>Sale primero el último elemento añadido.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Cola</p>
+                <h3 class="fragment highlight-red">FIFO</h3>
+                <p><code>enqueue</code> <code>dequeue</code></p>
+                <p>Sale primero el elemento más antiguo.</p>
+              </article>
+            </div>
+            <p class="slide-thesis fragment fade-up">La abstracción permite cambiar la representación interna sin cambiar el código cliente que depende del contrato.</p>
+            <aside class="notes">Presente las dos tarjetas por separado. En la pila, marque LIFO con un ejemplo de deshacer: la última edición es la primera que se revierte. En la cola, marque FIFO con una fila de impresión: lo que llegó primero se atiende primero. Cierre con la frase de abajo: si el cliente solo usa push y pop, mañana la pila puede dejar de ser un arreglo y el cliente no se entera. No abra todavía el código. Eso está en la siguiente slide, hacia abajo.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.1.1 · Encapsulación</p>
+            <h2>Una pila que no expone su arreglo</h2>
+            <div class="code-split">
+              <pre><code class="language-javascript" data-trim data-line-numbers="2|4-10|12-18">class Pila {
+  #elementos = [];
+
+  push(valor) {
+    this.#elementos.push(valor);
+  }
+
+  pop() {
+    return this.#elementos.pop();
+  }
+
+  peek() {
+    return this.#elementos.at(-1);
+  }
+
+  get longitud() {
+    return this.#elementos.length;
+  }
+}</code></pre>
+              <div class="callout-stack">
+                <article class="concept-card fragment fade-up">
+                  <p class="chip-label">Campo privado</p>
+                  <p><code>#elementos</code> no se lee desde fuera de la clase.</p>
+                </article>
+                <article class="concept-card fragment fade-up">
+                  <p class="chip-label">Operaciones</p>
+                  <p>El cliente empuja y saca. No indexa el arreglo.</p>
+                </article>
+                <article class="stat-chip fragment fade-up">
+                  <strong>edición</strong>
+                  <span>pop() devuelve el último push</span>
+                </article>
+              </div>
+            </div>
+            <aside class="notes">Recorra el código en tres pasos, que ya están marcados como fragmentos de línea. Primero el campo: el numeral hace privado a elementos, así que historial.elementos o historial['#elementos'] no son la API. Segundo, push y pop modifican el tope. Tercero, peek y longitud observan sin sacar. Arme el ejemplo en voz alta: push de inicio, push de edición, pop devuelve edición. Si alguien pregunta por el arreglo, responda que esa pregunta ya rompió el contrato.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.1.1 · Forma</p>
+            <h2>El contrato no exige la palabra class</h2>
+            <ul class="point-list">
+              <li class="fragment fade-up">JavaScript no declara <code>interface</code>. TypeScript sí, y solo en compilación.</li>
+              <li class="fragment fade-up">El código cliente depende de la forma: métodos y comportamiento. Es duck typing.</li>
+              <li class="fragment fade-up">Una clase ES6 construye objetos. No es el único modo de cumplir el contrato.</li>
+              <li class="fragment highlight-red">Pruebe las operaciones públicas. La invariante vive dentro del TDA.</li>
+            </ul>
+            <pre class="compact-code"><code class="language-javascript" data-trim>function guardarTodo(almacen, valores) {
+  for (const valor of valores) almacen.guardar(valor);
+}
+
+const memoria = { datos: [], guardar(valor) { this.datos.push(valor); } };
+guardarTodo(memoria, ["A", "B"]);</code></pre>
+            <aside class="notes">Lea la función guardarTodo antes de mostrar el objeto. Pregunte: ¿qué necesita almacen para que esto no reviente? Solo un método guardar. Entonces muestre el objeto literal: no hay class, y aun así el contrato se cumple. El resultado es el arreglo A, B dentro de datos. Cierre advirtiendo que datos quedó público en este ejemplo mínimo: en un TDA de verdad esa lista sería privada y el test miraría guardar, no el arreglo. Referencia para quien quiera leer después: campos privados en MDN.</aside>
+          </section>
         </section>
 
-        <!-- Cierre: cita destacada para concluir la presentación. -->
-        <section class="slide-frame quote-slide" data-background-color="#ffffff">
-          <header class="brand-header" aria-label="Universidad Nacional de Loja">
-            <span class="brand-rule"></span>
-            <img class="brand-logo" src="img/logounl.png" width="369" height="145" alt="Logotipo de la Universidad Nacional de Loja">
-            <span class="brand-rule"></span>
-          </header>
-          <div class="quote-content">
-            <span class="quote-mark" aria-hidden="true">“</span>
-            <blockquote>La educación abre caminos para construir un futuro compartido.</blockquote>
-            <p class="quote-attribution">Universidad Nacional de Loja</p>
-            <div class="cover-accent" aria-hidden="true"></div>
-            <p class="closing-line">Gracias</p>
-          </div>
-          <div class="watermark-seal" aria-hidden="true"><span>UNIVERSIDAD NACIONAL DE LOJA</span><b>UNL</b><small>1859</small></div>
-          <footer class="slide-footer"><span>Universidad Nacional de Loja</span><span class="page-number">04</span></footer>
+        <section>
+          <section class="tech-slide section-break" data-background-color="#ffffff">
+            <h2>Valores y<br>referencias</h2>
+            <p class="section-break-footer">Estructura de Datos</p>
+            <aside class="notes">Cambie de bloque. Diga: hasta aquí el contrato. Ahora, qué ocurre en la asignación. Hay dos ideas que se confunden en clase: copiar un valor y compartir un objeto. Baje. La frase stack para primitivos y heap para objetos va a aparecer, y hay que decir que es un modelo didáctico, no una regla de ECMAScript.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.1.2 · Modelo</p>
+            <h2>Qué se copia al asignar</h2>
+            <div class="card-grid cols-2">
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Primitivos</p>
+                <h3>Se copia el valor</h3>
+                <p><code>number</code> <code>boolean</code> <code>bigint</code> <code>string</code> <code>symbol</code> <code>undefined</code> <code>null</code></p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Objetos</p>
+                <h3>Se copia la referencia</h3>
+                <p>Dos variables pueden nombrar el mismo objeto. El argumento también viaja por valor: si ese valor es una referencia, ambos ven el mismo objeto.</p>
+              </article>
+            </div>
+            <p class="slide-thesis fragment highlight-red">Stack y heap, aquí, son un dibujo para pensar. El motor puede representar las cosas de otro modo.</p>
+            <aside class="notes">Izquierda: asigne un número, cámbielo en la copia y muestre que el original no se mueve. Derecha: asigne un objeto a otra variable, mute un campo y muestre que ambas lo ven. Remarque que el parámetro de una función recibe una copia del valor de la variable. Si ese valor es una referencia, no se clonó el objeto. La frase en rojo es obligatoria: no prometan que el número vive en el stack físico. El recolector libera objetos que ya nadie puede alcanzar. Siguiente slide: cómo medir, sin convertir esa medida en un precio por objeto.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.1.2 · Medición</p>
+            <h2>El heap del proceso, no el de un objeto</h2>
+            <pre><code class="language-javascript" data-trim data-line-numbers="1|2-5|6">const antes = process.memoryUsage().heapUsed;
+const registros = Array.from({ length: 250_000 }, (_, id) => ({
+  id,
+  activo: id % 2 === 0
+}));
+const despues = process.memoryUsage();</code></pre>
+            <div class="stat-row">
+              <article class="stat-chip fragment fade-up">
+                <strong>heapUsed</strong>
+                <span>Heap de V8 en uso</span>
+              </article>
+              <article class="stat-chip fragment fade-up">
+                <strong>heapTotal</strong>
+                <span>Heap de V8 asignado</span>
+              </article>
+              <article class="stat-chip fragment fade-up">
+                <strong class="fragment highlight-red">rss</strong>
+                <span>Memoria residente del proceso</span>
+              </article>
+            </div>
+            <aside class="notes">Este fragmento es Node, no el navegador. Léalo en tres tiempos. Primero se toma heapUsed. Después se retienen un cuarto de millón de objetos, porque si no guardamos el arreglo la medición no tiene sentido. Al final se vuelve a leer el proceso. Las tres tarjetas no son el tamaño de un registro: heapUsed y heapTotal hablan del heap de V8, rss incluye más que ese heap. Diga explícitamente que una resta no entrega bytes por objeto. La recolección y el resto del proceso mueven el número.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.1.2 · Lectura</p>
+            <h2>Cómo no mentirse con una resta</h2>
+            <div class="card-grid cols-3">
+              <article class="concept-card fragment fade-up">
+                <h3>heapUsed / heapTotal</h3>
+                <p>Usado y asignado dentro del heap de V8.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <h3>external / arrayBuffers</h3>
+                <p>Memoria fuera de los objetos JavaScript, buffers incluidos.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <h3>rss</h3>
+                <p>Todo el proceso. Siempre es más que el heap.</p>
+              </article>
+            </div>
+            <p class="slide-thesis fragment fade-up">Compare varias muestras en las mismas condiciones. En Chrome, dos heap snapshots y el panel Retainers.</p>
+            <aside class="notes">No repita la tabla como lista. Una tarjeta, una decisión. Si el número que crece es external o arrayBuffers, no busquen el objeto JavaScript: busquen el buffer. Si crece rss y el heap no, el costo está en otra parte del proceso. Para el navegador, el camino es DevTools: snapshot antes, snapshot después, y Retainers para ver quién sigue apuntando al objeto. Cierre el bloque recordando el argumento: no hay una regla especial de pase por referencia. Se copia el valor, y a veces ese valor es una dirección.</aside>
+          </section>
         </section>
 
-        <!-- Diapositivas adicionales cargadas desde contenido.md con Markdown. -->
-        <section class="slide-frame markdown-slide" data-markdown="contenido.md"
-                 data-separator="^\r?\n---\r?\n$"
-                 data-separator-vertical="^\r?\n--\r?\n$">
+        <section>
+          <section class="tech-slide section-break" data-background-color="#ffffff">
+            <h2>Arreglos,<br>conjuntos<br>y registros</h2>
+            <p class="section-break-footer">Estructura de Datos</p>
+            <aside class="notes">Nuevo bloque. La pregunta de esta parte es práctica: dado un problema, cuál estructura nativa de JavaScript carga con la operación que ustedes van a repetir. No existe un tipo llamado Record en el lenguaje. A un objeto plano con campos conocidos lo llamamos registro. Record de TypeScript es otra cosa: un tipo, no una estructura de ejecución. Baje para ver las cinco opciones juntas.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.1 · Elección</p>
+            <h2>Cinco representaciones, una operación dominante</h2>
+            <div class="card-grid cols-agenda">
+              <article class="concept-card fragment fade-up">
+                <h3>Array</h3>
+                <p>Secuencia ordenada. Índice, longitud dinámica, métodos de colección.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <h3>TypedArray</h3>
+                <p>Números sobre un ArrayBuffer. Longitud fija. No guarda objetos.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <h3>Set</h3>
+                <p>Un valor, una vez. Igualdad SameValueZero.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <h3>Map</h3>
+                <p>Clave de cualquier tipo. Conserva el orden de inserción.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <h3>Registro</h3>
+                <p>Objeto con campos nombrados. Claves string o symbol.</p>
+              </article>
+            </div>
+            <aside class="notes">Destape una tarjeta y dé un ejemplo de una sola frase. Array: la lista de cursos, porque el orden de la malla importa. TypedArray: una muestra de audio o un pixel, no un estudiante. Set: etiquetas, porque obligatoria repetida sigue siendo una. Map: estudiantes por id numérico, sin convertir la clave a string. Registro: el estudiante en sí, con nombre y activo. Si preguntan por la complejidad, diga que la especificación no les firma un big-O por método: eso se mide en el motor que van a usar.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.1 · Ejemplo</p>
+            <h2>La misma escena, cuatro estructuras</h2>
+            <pre class="compact-code"><code class="language-javascript" data-trim data-line-numbers="1-2|4-5|7">const cursos = ["Estructuras", "Algoritmos"];
+const etiquetas = new Set(["obligatoria", "carrera", "obligatoria"]);
+
+const estudiante = { id: 42, nombre: "Ana", activo: true };
+const estudiantesPorId = new Map([[estudiante.id, estudiante]]);
+
+const bytes = new Uint8Array([0, 127, 255]);</code></pre>
+            <div class="stat-row cols-4">
+              <article class="stat-chip fragment fade-up">
+                <strong>Estructuras</strong>
+                <span>cursos[0]</span>
+              </article>
+              <article class="stat-chip fragment fade-up">
+                <strong>2</strong>
+                <span>etiquetas.size</span>
+              </article>
+              <article class="stat-chip fragment fade-up">
+                <strong>Ana</strong>
+                <span>Map.get(42).nombre</span>
+              </article>
+              <article class="stat-chip fragment fade-up">
+                <strong>3</strong>
+                <span>bytes.byteLength</span>
+              </article>
+            </div>
+            <aside class="notes">El Set es la línea que hay que detenerse a mirar: obligatoria entra dos veces y size queda en 2. Eso es SameValueZero, no un trim mágico de strings. El Map usa el número 42 como clave, el mismo id del registro. Uint8Array no es una lista de estudiantes: son tres bytes, y byteLength es 3. Relacione cada chip con la tarjeta de la slide anterior. No convierta este ejemplo en cuatro mini-clases.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.1 · Criterio</p>
+            <h2>Elija por la operación, después mida</h2>
+            <ul class="point-list">
+              <li class="fragment fade-up">Array cuando importan el orden, el recorrido y las operaciones de secuencia.</li>
+              <li class="fragment fade-up">Set para unicidad y pertenencia. Map cuando la clave no es un string o el conjunto de entradas cambia.</li>
+              <li class="fragment fade-up">TypedArray para datos numéricos empaquetados: imagen, audio, protocolo. No almacena objetos arbitrarios.</li>
+              <li class="fragment highlight-red">No copie la colección en cada paso. En datos grandes, la copia también cuesta.</li>
+            </ul>
+            <aside class="notes">Esta slide es la regla de diseño, no un resumen. Pida que elijan en voz alta una estructura para tres casos rápidos: historial de navegación, diccionario de sesiones por objeto usuario, y buffer de un archivo binario. El último punto, en rojo, es el que más se viola en los trabajos: Array.from dentro de un ciclo, o convertir un Set a arreglo para volver a preguntar si contiene. Midan con datos parecidos a los reales y en el motor de destino. Referencia: TypedArray en MDN.</aside>
+          </section>
+        </section>
+
+        <section>
+          <section class="tech-slide section-break" data-background-color="#ffffff">
+            <h2>Archivos</h2>
+            <p class="section-break-footer">Estructura de Datos</p>
+            <aside class="notes">Salimos de la memoria del proceso y entramos al disco. Dos patrones, y la diferencia no es de estilo: es de cuánta información hace falta antes de leer. El stream sirve cuando se procesa el archivo completo por bloques. El offset sirve cuando ya saben en qué byte está el registro. Adelanten que el offset es en bytes, no en caracteres. En UTF-8 un carácter puede ocupar varios bytes.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.2 · Patrones</p>
+            <h2>Dos lecturas, dos preguntas</h2>
+            <div class="card-grid cols-2">
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Secuencial</p>
+                <h3>createReadStream()</h3>
+                <p>El archivo se recorre por bloques. Conviene cuando hay que procesarlo completo y no quieren cargarlo de una vez.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Posicional</p>
+                <h3>open() + read(position)</h3>
+                <p>Hace falta conocer el offset en bytes del registro. Un formato de longitud fija puede calcular <code>cabecera + i * tamaño</code>.</p>
+              </article>
+            </div>
+            <aside class="notes">Haga la pregunta antes de mostrar la segunda tarjeta: si el registro que buscan es el número mil, ¿leen los 999 anteriores? Si el formato es de longitud fija, no. Si es texto de líneas irregulares, el stream o un índice previo siguen siendo el camino. Repita: position cuenta bytes. Al final del archivo, bytesRead puede ser menor que el buffer que reservaron. Eso se ve en el código de la siguiente slide.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.2 · Código</p>
+            <h2>Stream completo, luego 16 bytes en el offset 128</h2>
+            <pre class="compact-code"><code class="language-javascript" data-trim data-line-numbers="4-6|8-12">const { createReadStream, promises: fs } = require("node:fs");
+
+async function main() {
+  const ruta = process.argv[2] ?? "contenido.md";
+  for await (const fragmento of createReadStream(ruta, { encoding: "utf8" })) {
+    process.stdout.write(fragmento);
+  }
+
+  const archivo = await fs.open(ruta, "r");
+  try {
+    const buffer = Buffer.alloc(16);
+    const { bytesRead } = await archivo.read(buffer, 0, buffer.length, 128);
+    console.log("\nBytes desde offset 128:", buffer.subarray(0, bytesRead));
+  } finally {
+    await archivo.close();
+  }
+}</code></pre>
+            <aside class="notes">Primero el for await: cada fragmento se escribe y se puede descartar. Si lo concatenan todo en un string, perdieron la ventaja del stream. Después el acceso directo: se abre el archivo, se reserva un buffer de 16 bytes y se lee desde el byte 128. subarray hasta bytesRead evita imprimir ceros de más cuando el archivo es corto. El finally cierra el handle aunque la lectura falle. Dígales que este archivo se correría con node, pasándole la ruta. No lo ejecuten dentro de la diapositiva.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.2 · Diseño</p>
+            <h2>El índice y el archivo tienen que ponerse de acuerdo</h2>
+            <ul class="point-list">
+              <li class="fragment fade-up">Si el consumidor no acumula fragmentos, la memoria no crece con el tamaño del archivo.</li>
+              <li class="fragment fade-up">El acceso aleatorio paga cuando hay índice, cabecera o registros de longitud fija.</li>
+              <li class="fragment fade-up">En UTF-8 calculen offsets con la codificación, no con el número de caracteres.</li>
+              <li class="fragment highlight-red">Comprueben bytesRead. Si hay escritores concurrentes, definan cómo se mantiene el índice.</li>
+            </ul>
+            <aside class="notes">El punto que hay que dejar clavado es el último. Un offset calculado contra un archivo que otro proceso está agrandando o truncando no es una lectura: es una condición de carrera. No hace falta resolverla hoy. Sí hace falta que el diseño diga quién actualiza el índice. Repita bytesRead con un archivo de 10 bytes y un offset de 128: la lectura no lanza por estar cerca del final, devuelve menos bytes. Referencia: FileHandle.read y streams en la documentación de Node.</aside>
+          </section>
+        </section>
+
+        <section>
+          <section class="tech-slide section-break" data-background-color="#ffffff">
+            <h2>Persistencia</h2>
+            <p class="section-break-footer">Estructura de Datos</p>
+            <aside class="notes">Último bloque. La pregunta ya no es cómo recorrer un archivo, sino dónde vive el dato cuando el proceso termina. Hay cuatro medios en esta sesión: JSON, binario, localStorage e IndexedDB. Ninguno del navegador reemplaza una copia en el servidor. Baje y elija el medio antes de mostrar la API.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.3 · Medio</p>
+            <h2>Dónde guardarlo cambia el costo de leerlo</h2>
+            <div class="card-grid cols-4">
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">JSON</p>
+                <h3>Texto interoperable</h3>
+                <p>Al parsear, el documento entero se materializa. BigInt no entra directo.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Binario</p>
+                <h3>Bytes con esquema</h3>
+                <p>Controlan tamaño y orden. Hace falta versión del formato.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">localStorage</p>
+                <h3>Strings por origen</h3>
+                <p>API síncrona. Sirve para preferencias pequeñas.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">IndexedDB</p>
+                <h3>Registros e índices</h3>
+                <p>Asíncrono, con transacciones. No es un backup del servidor.</p>
+              </article>
+            </div>
+            <aside class="notes">Cuatro medios, cuatro límites. JSON se lee fácil y se paga completo al parsear. El binario exige que ustedes documenten el esquema: en el ejemplo que viene, un entero de 32 bits little-endian. localStorage bloquea el hilo y solo acepta strings: un objeto pasa por JSON.stringify. IndexedDB es el que aguanta una colección con consultas, y aun así vive en el navegador de esa persona, en ese origen. Validar al leer: permisos, cuota y formato roto son los tres errores que el trabajo tiene que nombrar.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.3 · Node</p>
+            <h2>Un JSON legible y un entero de 4 bytes</h2>
+            <div class="code-split">
+              <pre><code class="language-javascript" data-trim data-line-numbers="2-4|6-9">const { readFile, writeFile } = require("node:fs/promises");
+
+async function main() {
+  const estudiantes = [{ id: 42, nombre: "Ana" }];
+  await writeFile("estudiantes.json", JSON.stringify(estudiantes, null, 2));
+  const recuperados = JSON.parse(await readFile("estudiantes.json", "utf8"));
+
+  const registro = Buffer.alloc(4);
+  registro.writeUInt32LE(2026, 0);
+  await writeFile("anio.bin", registro);
+  const bytes = await readFile("anio.bin");
+}</code></pre>
+              <div class="callout-stack">
+                <article class="stat-chip fragment fade-up">
+                  <strong>Ana</strong>
+                  <span>recuperados[0].nombre</span>
+                </article>
+                <article class="stat-chip fragment fade-up">
+                  <strong>2026</strong>
+                  <span>bytes.readUInt32LE(0)</span>
+                </article>
+                <article class="concept-card fragment highlight-red">
+                  <p>Mismo número, dos formatos. El binario no se abre en un editor para entenderlo.</p>
+                </article>
+              </div>
+            </div>
+            <aside class="notes">Partan el código en dos. El JSON guarda un arreglo con Ana y lo vuelve a parsear: el nombre sobrevive porque es un tipo que JSON conoce. Después, cuatro bytes y writeUInt32LE escriben 2026 en orden little-endian. readUInt32LE lo recupera. Pregunte qué pasaría con un BigInt o con una función dentro del objeto: JSON.stringify no los conserva. El archivo anio.bin sin el esquema es indistinguishable de ruido. Por eso el formato necesita versión.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.2.3 · Navegador</p>
+            <h2>Preferencia pequeña, colección con transacción</h2>
+            <pre class="compact-code"><code class="language-javascript" data-trim data-line-numbers="1-2|4-6|7-11">localStorage.setItem("preferencias", JSON.stringify({ tema: "claro" }));
+const preferencias = JSON.parse(localStorage.getItem("preferencias") ?? "{}");
+
+const solicitud = indexedDB.open("unl-demo", 1);
+solicitud.onupgradeneeded = () => {
+  solicitud.result.createObjectStore("ajustes", { keyPath: "id" });
+};
+solicitud.onsuccess = () => {
+  const db = solicitud.result;
+  const tx = db.transaction("ajustes", "readwrite");
+  tx.objectStore("ajustes").put({ id: "tema", valor: preferencias.tema });
+  tx.oncomplete = () => db.close();
+};</code></pre>
+            <p class="slide-thesis fragment fade-up">localStorage es sincrónico y estrecho. IndexedDB agrupa el cambio en una transacción. Ninguno sustituye la copia del servidor.</p>
+            <aside class="notes">Señalen el stringify: sin eso, localStorage guarda el string objeto Object. El operador de fusión cubre la primera visita, cuando la clave no existe. En IndexedDB, onupgradeneeded crea el almacén solo cuando cambia la versión. El put va dentro de una transacción readwrite, y el close espera a oncomplete, no al return de put. Si queda tiempo, pregunte por qué sería un error guardar ahí la nómina de la universidad. Porque el dato vive en un navegador, sin el respaldo ni el control de acceso del servidor.</aside>
+          </section>
+        </section>
+
+        <section class="tech-slide section-break" data-background-color="#ffffff">
+          <h2>Gracias</h2>
+          <p class="section-break-footer">Estructura de Datos</p>
+          <aside class="notes">Cierre sin abrir preguntas todavía. Tres frases, una por fragmento. Primera: si el cliente depende de push y pop, el arreglo interno puede cambiar. Segunda: asignar un objeto no lo clona. Tercera: Array, Set, Map, stream o IndexedDB se justifican por la operación dominante, no por la moda. Después deje la palabra Gracias en pantalla y recién ahí abra el espacio para preguntas. Si preguntan por el código, los ejemplos de archivo y de JSON se corren con Node, fuera de estas diapositivas.</aside>
         </section>
       </div>
     </div>
