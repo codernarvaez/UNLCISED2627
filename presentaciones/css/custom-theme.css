@@ -826,16 +826,16 @@
 }
 
 .code-split {
-  align-items: stretch;
+  align-items: start;
   display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 .callout-stack {
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .stat-row {
@@ -880,18 +880,23 @@
 
 .reveal .tech-slide pre,
 .reveal .tech-slide pre code,
-.reveal .tech-slide pre.compact-code {
-  background: #f4f6f8;
-  color: #1c1c1c;
+.reveal .tech-slide pre code.hljs,
+.reveal .tech-slide pre.compact-code,
+.reveal .tech-slide pre .hljs-ln,
+.reveal .tech-slide pre td.hljs-ln-line,
+.reveal .tech-slide pre .highlight-line {
+  background: #0a0a0a;
+  color: #ffffff;
   font-family: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.35;
+  opacity: 1;
 }
 
 .reveal .tech-slide pre {
-  border: 1px solid #d9dee3;
-  border-left: 5px solid var(--unl-red);
+  border: 1px solid #000;
+  border-left: 6px solid var(--unl-red);
   box-shadow: none;
   margin: 0;
   width: 100%;
@@ -911,46 +916,119 @@
 .reveal .tech-slide .hljs-selector-tag,
 .reveal .tech-slide .hljs-built_in,
 .reveal .tech-slide .hljs-type {
-  color: #e30613;
+  color: #ff5c6c;
   font-weight: 700;
 }
 
 .reveal .tech-slide .hljs-string,
 .reveal .tech-slide .hljs-regexp,
 .reveal .tech-slide .hljs-attr {
-  color: #0b6e4f;
+  color: #8ef0b0;
 }
 
 .reveal .tech-slide .hljs-number,
 .reveal .tech-slide .hljs-literal {
-  color: #9a3412;
+  color: #ffcc66;
   font-weight: 700;
 }
 
 .reveal .tech-slide .hljs-title,
 .reveal .tech-slide .hljs-title.function_,
 .reveal .tech-slide .hljs-title.class_ {
-  color: #1d4e89;
+  color: #8ecbff;
   font-weight: 700;
 }
 
 .reveal .tech-slide .hljs-comment,
 .reveal .tech-slide .hljs-quote {
-  color: #5c6570;
+  color: #9aa3ad;
 }
 
 .reveal .tech-slide .hljs-params,
 .reveal .tech-slide .hljs-variable,
 .reveal .tech-slide .hljs-property,
 .reveal .tech-slide .hljs-name {
-  color: #1c1c1c;
+  color: #f4f4f5;
 }
 
 .reveal .tech-slide pre code .hljs-ln-numbers {
-  border-right: 1px solid #d0d5da;
+  border-right: 1px solid #2e2e2e;
   color: #8b939c;
   padding-right: 10px;
   text-align: right;
+}
+
+.reveal .tech-slide pre .highlight-line,
+.reveal .tech-slide pre td.hljs-ln-line {
+  opacity: 1 !important;
+}
+
+.reveal .tech-slide pre .current-fragment .highlight,
+.reveal .tech-slide pre code .highlight {
+  background: #3a0a10;
+  box-shadow: inset 3px 0 0 #ff2a36;
+}
+
+.playground {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1.45fr 0.7fr;
+}
+
+.playground-code {
+  background: #111111;
+  border: 1px solid #2a2a2a;
+  border-left: 5px solid var(--unl-red);
+  box-sizing: border-box;
+  color: #f4f4f5;
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+  font-size: 16px;
+  font-weight: 500;
+  height: 430px;
+  line-height: 1.35;
+  margin: 0;
+  padding: 12px;
+  resize: none;
+  width: 100%;
+}
+
+.playground-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.playground-run {
+  background: var(--unl-red);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px 16px;
+}
+
+.playground-side .playground-output {
+  flex: 1;
+  min-height: 220px;
+  white-space: pre-wrap;
+}
+
+.example-run {
+  align-items: start;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto minmax(0, 1fr);
+  margin-top: 8px;
+}
+
+.example-output {
+  margin: 0;
+  max-height: 72px;
+  min-height: 36px;
+  overflow: auto;
+  white-space: pre-wrap;
 }
 
 .reveal .slides section.impact-slide {

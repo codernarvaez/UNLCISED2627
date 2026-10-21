@@ -33,35 +33,36 @@
               <h3>Conceptos fundamentales</h3>
               <div class="index-row"><span>El TDA define el contrato</span><span class="index-page">4</span></div>
               <div class="index-row"><span>Una pila que no expone su arreglo</span><span class="index-page">5</span></div>
-              <div class="index-row"><span>El contrato no exige la palabra class</span><span class="index-page">6</span></div>
+              <div class="index-row"><span>Probar la pila</span><span class="index-page">6</span></div>
+              <div class="index-row"><span>El contrato no exige la palabra class</span><span class="index-page">7</span></div>
             </div>
             <div class="index-group">
               <h3>Memoria: valores y referencias</h3>
-              <div class="index-row"><span>Qué se copia al asignar</span><span class="index-page">8</span></div>
-              <div class="index-row"><span>El heap del proceso</span><span class="index-page">9</span></div>
-              <div class="index-row"><span>Cómo leer una medición</span><span class="index-page">10</span></div>
+              <div class="index-row"><span>Qué se copia al asignar</span><span class="index-page">9</span></div>
+              <div class="index-row"><span>El heap del proceso</span><span class="index-page">10</span></div>
+              <div class="index-row"><span>Cómo leer una medición</span><span class="index-page">11</span></div>
             </div>
             <div class="index-group">
               <h3>Arreglos, conjuntos y registros</h3>
-              <div class="index-row"><span>Elegir la representación</span><span class="index-page">12</span></div>
-              <div class="index-row"><span>Cuatro estructuras en una escena</span><span class="index-page">13</span></div>
-              <div class="index-row"><span>Criterio de uso</span><span class="index-page">14</span></div>
+              <div class="index-row"><span>Elegir la representación</span><span class="index-page">13</span></div>
+              <div class="index-row"><span>Cuatro estructuras en una escena</span><span class="index-page">14</span></div>
+              <div class="index-row"><span>Criterio de uso</span><span class="index-page">15</span></div>
             </div>
             <div class="index-group">
               <h3>Archivos</h3>
-              <div class="index-row"><span>Lectura secuencial y por offset</span><span class="index-page">16</span></div>
-              <div class="index-row"><span>Stream y dieciséis bytes</span><span class="index-page">17</span></div>
-              <div class="index-row"><span>Índice y archivo</span><span class="index-page">18</span></div>
+              <div class="index-row"><span>Lectura secuencial y por offset</span><span class="index-page">17</span></div>
+              <div class="index-row"><span>Stream y dieciséis bytes</span><span class="index-page">18</span></div>
+              <div class="index-row"><span>Índice y archivo</span><span class="index-page">19</span></div>
             </div>
             <div class="index-group">
               <h3>Persistencia</h3>
-              <div class="index-row"><span>Dónde guardar el dato</span><span class="index-page">20</span></div>
-              <div class="index-row"><span>JSON y un entero binario</span><span class="index-page">21</span></div>
-              <div class="index-row"><span>localStorage e IndexedDB</span><span class="index-page">22</span></div>
+              <div class="index-row"><span>Dónde guardar el dato</span><span class="index-page">21</span></div>
+              <div class="index-row"><span>JSON y un entero binario</span><span class="index-page">22</span></div>
+              <div class="index-row"><span>localStorage e IndexedDB</span><span class="index-page">23</span></div>
             </div>
           </div>
           <p class="index-footer">Estructura de Datos</p>
-          <aside class="notes">Esta lámina es el índice de la sesión, no un resumen. El número de la derecha es el de la diapositiva en el contador. Los saltos, del 6 al 8 o del 10 al 12, son las portadillas de cada bloque. Recórralo una vez: primero el contrato del dato, después la memoria, las colecciones, los archivos y la persistencia. No lea cada título. Diga a qué pregunta responde cada bloque y avance a la derecha.</aside>
+          <aside class="notes">Esta lámina es el índice de la sesión, no un resumen. El número de la derecha es el de la diapositiva en el contador. Los saltos, del 7 al 9, del 11 al 13, del 15 al 17 y del 19 al 21, son las portadillas de cada bloque. Recórralo una vez: primero el contrato del dato, después la memoria, las colecciones, los archivos y la persistencia. No lea cada título. Diga a qué pregunta responde cada bloque y avance a la derecha.</aside>
         </section>
 
         <section>
@@ -114,7 +115,13 @@
   get longitud() {
     return this.#elementos.length;
   }
-}</code></pre>
+}
+
+const historial = new Pila();
+historial.push("inicio");
+historial.push("edición");
+console.log(historial.pop());
+console.log(historial.peek());</code></pre>
               <div class="callout-stack">
                 <article class="concept-card fragment fade-up">
                   <p class="chip-label">Campo privado</p>
@@ -130,7 +137,31 @@
                 </article>
               </div>
             </div>
-            <aside class="notes">Recorra el código en tres pasos, que ya están marcados como fragmentos de línea. Primero el campo: el numeral hace privado a elementos, así que historial.elementos o historial['#elementos'] no son la API. Segundo, push y pop modifican el tope. Tercero, peek y longitud observan sin sacar. Arme el ejemplo en voz alta: push de inicio, push de edición, pop devuelve edición. Si alguien pregunta por el arreglo, responda que esa pregunta ya rompió el contrato.</aside>
+            <aside class="notes">Recorra el código en tres pasos, que ya están marcados como fragmentos de línea. Primero el campo: el numeral hace privado a elementos, así que historial.elementos o historial['#elementos'] no son la API. Segundo, push y pop modifican el tope. Tercero, peek y longitud observan sin sacar. Arme el ejemplo en voz alta: push de inicio, push de edición, pop devuelve edición. Si alguien pregunta por el arreglo, responda que esa pregunta ya rompió el contrato. La lámina de abajo ejecuta ese mismo ejemplo.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">1.1.1 · Prueba</p>
+            <h2>Probar la pila en el momento</h2>
+            <div class="playground">
+              <textarea class="playground-code" spellcheck="false">class Pila {
+  #elementos = [];
+  push(valor) { this.#elementos.push(valor); }
+  pop() { return this.#elementos.pop(); }
+  peek() { return this.#elementos.at(-1); }
+}
+
+const pila = new Pila();
+pila.push("inicio");
+pila.push("edición");
+console.log(pila.pop());
+console.log(pila.peek());</textarea>
+              <div class="playground-side">
+                <button type="button" class="playground-run">Ejecutar</button>
+                <pre class="playground-output">La salida aparece acá.</pre>
+              </div>
+            </div>
+            <aside class="notes">Esta lámina corre el ejemplo en el navegador. Pulse Ejecutar: pop escribe edición y peek escribe inicio. Si cambia el orden de los push, la salida cambia con el tope. Un bucle infinito se corta al segundo y medio. No es un compilador de un lenguaje nuevo: ejecuta el JavaScript que está en el cuadro.</aside>
           </section>
 
           <section class="tech-slide" data-background-color="#ffffff">
@@ -147,7 +178,8 @@
 }
 
 const memoria = { datos: [], guardar(valor) { this.datos.push(valor); } };
-guardarTodo(memoria, ["A", "B"]);</code></pre>
+guardarTodo(memoria, ["A", "B"]);
+console.log(memoria.datos.join(", "));</code></pre>
             <aside class="notes">Lea la función guardarTodo antes de mostrar el objeto. Pregunte: ¿qué necesita almacen para que esto no reviente? Solo un método guardar. Entonces muestre el objeto literal: no hay class, y aun así el contrato se cumple. El resultado es el arreglo A, B dentro de datos. Cierre advirtiendo que datos quedó público en este ejemplo mínimo: en un TDA de verdad esa lista sería privada y el test miraría guardar, no el arreglo. Referencia para quien quiera leer después: campos privados en MDN.</aside>
           </section>
         </section>
@@ -186,7 +218,8 @@ const registros = Array.from({ length: 250_000 }, (_, id) => ({
   id,
   activo: id % 2 === 0
 }));
-const despues = process.memoryUsage();</code></pre>
+const despues = process.memoryUsage();
+console.log("heapUsed" in despues, "heapTotal" in despues, "rss" in despues);</code></pre>
             <div class="stat-row">
               <article class="stat-chip fragment fade-up">
                 <strong>heapUsed</strong>
@@ -270,7 +303,11 @@ const etiquetas = new Set(["obligatoria", "carrera", "obligatoria"]);
 const estudiante = { id: 42, nombre: "Ana", activo: true };
 const estudiantesPorId = new Map([[estudiante.id, estudiante]]);
 
-const bytes = new Uint8Array([0, 127, 255]);</code></pre>
+const bytes = new Uint8Array([0, 127, 255]);
+console.log(cursos[0]);
+console.log(etiquetas.size);
+console.log(estudiantesPorId.get(42).nombre);
+console.log(bytes.byteLength);</code></pre>
             <div class="stat-row cols-4">
               <article class="stat-chip fragment fade-up">
                 <strong>Estructuras</strong>
@@ -416,6 +453,8 @@ async function main() {
   registro.writeUInt32LE(2026, 0);
   await writeFile("anio.bin", registro);
   const bytes = await readFile("anio.bin");
+  console.log(recuperados[0].nombre);
+  console.log(bytes.readUInt32LE(0));
 }</code></pre>
               <div class="callout-stack">
                 <article class="stat-chip fragment fade-up">
@@ -439,6 +478,7 @@ async function main() {
             <h2>Preferencia pequeña, colección con transacción</h2>
             <pre class="compact-code"><code class="language-javascript" data-trim data-line-numbers="1-2|4-6|7-11">localStorage.setItem("preferencias", JSON.stringify({ tema: "claro" }));
 const preferencias = JSON.parse(localStorage.getItem("preferencias") ?? "{}");
+console.log(preferencias.tema);
 
 const solicitud = indexedDB.open("unl-demo", 1);
 solicitud.onupgradeneeded = () => {
@@ -448,7 +488,10 @@ solicitud.onsuccess = () => {
   const db = solicitud.result;
   const tx = db.transaction("ajustes", "readwrite");
   tx.objectStore("ajustes").put({ id: "tema", valor: preferencias.tema });
-  tx.oncomplete = () => db.close();
+  tx.oncomplete = () => {
+    db.close();
+    console.log("ok");
+  };
 };</code></pre>
             <p class="slide-thesis fragment fade-up">localStorage es sincrónico y estrecho. IndexedDB agrupa el cambio en una transacción. Ninguno sustituye la copia del servidor.</p>
             <aside class="notes">Señalen el stringify: sin eso, localStorage guarda el string objeto Object. El operador de fusión cubre la primera visita, cuando la clave no existe. En IndexedDB, onupgradeneeded crea el almacén solo cuando cambia la versión. El put va dentro de una transacción readwrite, y el close espera a oncomplete, no al return de put. Si queda tiempo, pregunte por qué sería un error guardar ahí la nómina de la universidad. Porque el dato vive en un navegador, sin el respaldo ni el control de acceso del servidor.</aside>
@@ -469,6 +512,8 @@ solicitud.onsuccess = () => {
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/highlight.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/math.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/search.js"></script>
+    <script src="js/run-snippet.js"></script>
+    <script src="js/playground.js"></script>
     <script src="js/config.js"></script>
   </body>
 </html>
