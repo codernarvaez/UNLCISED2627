@@ -1153,21 +1153,21 @@
 
 .index-group h3 {
   color: var(--ink);
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1.15;
-  margin: 0.1em 0 0.02em;
+  line-height: 1.1;
+  margin: 0.04em 0 0;
 }
 
 .index-row {
   align-items: baseline;
   color: var(--ink);
   display: flex;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
-  gap: 16px;
+  gap: 12px;
   justify-content: space-between;
-  line-height: 1.25;
+  line-height: 1.2;
   margin: 0;
   padding: 0;
 }

@@ -30,39 +30,155 @@
           <p class="index-banner">Índice</p>
           <div class="index-toc">
             <div class="index-group">
+              <h3>Programación funcional</h3>
+              <div class="index-row"><span>La base para citar</span><span class="index-page">4</span></div>
+              <div class="index-row"><span>Un envoltorio registra la llamada</span><span class="index-page">5</span></div>
+              <div class="index-row"><span>Pura, estado y argumentos</span><span class="index-page">6</span></div>
+              <div class="index-row"><span>El estado entra y sale</span><span class="index-page">7</span></div>
+            </div>
+            <div class="index-group">
               <h3>Conceptos fundamentales</h3>
-              <div class="index-row"><span>El TDA define el contrato</span><span class="index-page">4</span></div>
-              <div class="index-row"><span>Una pila que no expone su arreglo</span><span class="index-page">5</span></div>
-              <div class="index-row"><span>Probar la pila</span><span class="index-page">6</span></div>
-              <div class="index-row"><span>El contrato no exige la palabra class</span><span class="index-page">7</span></div>
+              <div class="index-row"><span>El TDA define el contrato</span><span class="index-page">9</span></div>
+              <div class="index-row"><span>Una pila que no expone su arreglo</span><span class="index-page">10</span></div>
+              <div class="index-row"><span>Probar la pila</span><span class="index-page">11</span></div>
+              <div class="index-row"><span>El contrato no exige la palabra class</span><span class="index-page">12</span></div>
             </div>
             <div class="index-group">
               <h3>Memoria: valores y referencias</h3>
-              <div class="index-row"><span>Qué se copia al asignar</span><span class="index-page">9</span></div>
-              <div class="index-row"><span>El heap del proceso</span><span class="index-page">10</span></div>
-              <div class="index-row"><span>Cómo leer una medición</span><span class="index-page">11</span></div>
+              <div class="index-row"><span>Qué se copia al asignar</span><span class="index-page">14</span></div>
+              <div class="index-row"><span>El heap del proceso</span><span class="index-page">15</span></div>
+              <div class="index-row"><span>Cómo leer una medición</span><span class="index-page">16</span></div>
             </div>
             <div class="index-group">
               <h3>Arreglos, conjuntos y registros</h3>
-              <div class="index-row"><span>Elegir la representación</span><span class="index-page">13</span></div>
-              <div class="index-row"><span>Cuatro estructuras en una escena</span><span class="index-page">14</span></div>
-              <div class="index-row"><span>Criterio de uso</span><span class="index-page">15</span></div>
+              <div class="index-row"><span>Elegir la representación</span><span class="index-page">18</span></div>
+              <div class="index-row"><span>Cuatro estructuras en una escena</span><span class="index-page">19</span></div>
+              <div class="index-row"><span>Criterio de uso</span><span class="index-page">20</span></div>
             </div>
             <div class="index-group">
               <h3>Archivos</h3>
-              <div class="index-row"><span>Lectura secuencial y por offset</span><span class="index-page">17</span></div>
-              <div class="index-row"><span>Stream y dieciséis bytes</span><span class="index-page">18</span></div>
-              <div class="index-row"><span>Índice y archivo</span><span class="index-page">19</span></div>
+              <div class="index-row"><span>Lectura secuencial y por offset</span><span class="index-page">22</span></div>
+              <div class="index-row"><span>Stream y dieciséis bytes</span><span class="index-page">23</span></div>
+              <div class="index-row"><span>Índice y archivo</span><span class="index-page">24</span></div>
             </div>
             <div class="index-group">
               <h3>Persistencia</h3>
-              <div class="index-row"><span>Dónde guardar el dato</span><span class="index-page">21</span></div>
-              <div class="index-row"><span>JSON y un entero binario</span><span class="index-page">22</span></div>
-              <div class="index-row"><span>localStorage e IndexedDB</span><span class="index-page">23</span></div>
+              <div class="index-row"><span>Dónde guardar el dato</span><span class="index-page">26</span></div>
+              <div class="index-row"><span>JSON y un entero binario</span><span class="index-page">27</span></div>
+              <div class="index-row"><span>localStorage e IndexedDB</span><span class="index-page">28</span></div>
             </div>
           </div>
           <p class="index-footer">Estructura de Datos</p>
-          <aside class="notes">Esta lámina es el índice de la sesión, no un resumen. El número de la derecha es el de la diapositiva en el contador. Los saltos, del 7 al 9, del 11 al 13, del 15 al 17 y del 19 al 21, son las portadillas de cada bloque. Recórralo una vez: primero el contrato del dato, después la memoria, las colecciones, los archivos y la persistencia. No lea cada título. Diga a qué pregunta responde cada bloque y avance a la derecha.</aside>
+          <aside class="notes">Esta lámina es el índice de la sesión, no un resumen. El número de la derecha es el de la diapositiva en el contador. Los saltos, del 7 al 9, del 12 al 14, del 16 al 18, del 20 al 22 y del 24 al 26, son las portadillas de cada bloque. Recórralo una vez: primero la base para citar, después el contrato del dato, la memoria, las colecciones, los archivos y la persistencia. No lea cada título. Diga a qué pregunta responde cada bloque y avance a la derecha.</aside>
+        </section>
+
+        <section>
+          <section class="tech-slide section-break" data-background-color="#ffffff">
+            <h2>Programación<br>funcional</h2>
+            <p class="section-break-footer">Estructura de Datos</p>
+            <aside class="notes">Transición. Antes del contrato del dato, el vocabulario de la función. Baje a la base: seis nombres para citar durante el resto de la sesión. Después, el código.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">FP · Base</p>
+            <h2>La base para citar</h2>
+            <div class="card-grid cols-3">
+              <article class="concept-card">
+                <p class="chip-label">Orden superior</p>
+                <p>Recibe una función y devuelve otra. El registro vive en el envoltorio, no en cada <code>return</code>.</p>
+              </article>
+              <article class="concept-card">
+                <p class="chip-label">Pura</p>
+                <p>Solo depende de sus parámetros. La misma entrada devuelve siempre el mismo valor.</p>
+              </article>
+              <article class="concept-card">
+                <p class="chip-label">Efecto</p>
+                <p>Cambia estado, muta un dato o se nota afuera, como una línea nueva en la consola.</p>
+              </article>
+              <article class="concept-card">
+                <p class="chip-label">Estado</p>
+                <p>Una variable global, o un dato guardado entre llamadas, ata el resultado a la historia del programa.</p>
+              </article>
+              <article class="concept-card">
+                <p class="chip-label">Argumento</p>
+                <p>Objetos y arreglos llegan por referencia. <code>sort</code>, <code>pop</code> y <code>splice</code> cambian el original.</p>
+              </article>
+              <article class="concept-card">
+                <p class="chip-label">Inyección</p>
+                <p>El estado entra y sale. La red, el disco o el azar llegan como una función que quien llama controla.</p>
+              </article>
+            </div>
+            <p class="slide-thesis">Estas seis ideas son la referencia. Las láminas de abajo las muestran en código.</p>
+            <aside class="notes">Esta lámina es la cita, no el ejemplo. Recorra las seis tarjetas y deje los nombres en el aire. Orden superior: una función que recibe o devuelve otra; por eso un envoltorio puede anotar la entrada y la salida sin editar cada return. Pura: misma entrada, misma salida, y nada más. Efecto: cualquier cambio visible afuera, incluido console.log. Estado: si la función lee una variable compartida, o recuerda un valor de la llamada anterior, depurarla exige reconstruir toda la historia. Un método que calcula con los atributos del objeto cae en el mismo caso. Argumento: el arreglo se pasa por referencia; sort, pop y splice lo modifican, toSorted, toReversed y toSpliced devuelven otro. Inyección: lo que no se puede purificar, una API, Math.random, la fecha o un error de entrada y salida, se pasa desde afuera. El cálculo de adentro sigue siendo citable. Cuando más adelante diga pura, efecto o inyección, vuelva a esta lámina.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">FP · Envoltorio</p>
+            <h2>Un envoltorio registra la llamada</h2>
+            <pre class="compact-code"><code class="language-javascript" data-trim>const sumar = (a, b) => a + b;
+
+const conRegistro = (fn) => (...args) => {
+  console.log("entra", fn.name, ...args);
+  const resultado = fn(...args);
+  console.log("sale", fn.name, resultado);
+  return resultado;
+};
+
+console.log(conRegistro(sumar)(22, 9));</code></pre>
+            <p class="slide-thesis fragment fade-up">Si hay varios return, no hace falta tocar cada uno. El envoltorio llama a la función original y anota la entrada y la salida.</p>
+            <aside class="notes">Muestre primero sumar: 22 más 9 es 31, y la función no sabe que la están observando. Después conRegistro. Recibe una función y devuelve otra. Esa otra anota el nombre y los argumentos, llama a la original, anota el resultado y lo devuelve. Pulse Ejecutar. La salida es entra sumar 22 9, sale sumar 31, y al final 31. Si sumar tuviera tres return, el envoltorio seguiría igual: el registro vive afuera.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">FP · Pureza</p>
+            <h2>La misma entrada, la misma salida</h2>
+            <div class="card-grid cols-3">
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Pura</p>
+                <p>Solo usa sus parámetros. No cambia nada afuera.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Estado</p>
+                <p>Una variable global o un dato guardado entre llamadas la vuelve impura.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Argumento</p>
+                <p><code>sort</code>, <code>pop</code> y <code>splice</code> modifican el arreglo original.</p>
+              </article>
+            </div>
+            <pre class="compact-code"><code class="language-javascript" data-trim>const numeros = [3, 1, 2];
+const ordenada = numeros.toSorted((a, b) => a - b);
+console.log(numeros.join(","));
+console.log(ordenada.join(","));</code></pre>
+            <p class="slide-thesis fragment fade-up"><code>toSorted</code>, <code>toReversed</code> y <code>toSpliced</code> devuelven otro arreglo. El azar, la hora, la red y <code>console.log</code> no pueden ser puros.</p>
+            <aside class="notes">Una función pura, con los mismos argumentos, devuelve siempre lo mismo. No lee una variable compartida, no recuerda la llamada anterior y no altera el objeto que le pasaron. El arreglo de objetos se pasa por referencia: sort, pop o splice cambian el original, y quien llamó puede no enterarse. toSorted deja numeros en 3, 1, 2 y ordenada en 1, 2, 3. Cierre con lo que no se puede purificar: Math.random, la fecha, una API y hasta console.log, porque alguien ve cambiar la consola.</aside>
+          </section>
+
+          <section class="tech-slide" data-background-color="#ffffff">
+            <p class="chip-label">FP · Inyección</p>
+            <h2>El estado entra y sale</h2>
+            <div class="card-grid cols-2">
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Estado</p>
+                <p>No lo lea ni lo escriba adentro. Recíbalo y devuelva el nuevo. Quien llama decide guardarlo.</p>
+              </article>
+              <article class="concept-card fragment fade-up">
+                <p class="chip-label">Inyección</p>
+                <p>Si hace falta red, disco o azar, pase esa función como argumento. El cálculo queda puro y el test pone un doble.</p>
+              </article>
+            </div>
+            <pre class="compact-code"><code class="language-javascript" data-trim>const sumarPuntos = (estado, puntos) => ({
+  ...estado,
+  total: estado.total + puntos
+});
+
+const leerRemoto = (obtener) => obtener("/notas");
+
+const notas = leerRemoto(() => ({ datos: [22, 9] }));
+console.log(sumarPuntos({ total: 0 }, 31).total);
+console.log(notas.datos.join(","));</code></pre>
+            <aside class="notes">sumarPuntos no toca una variable global. Recibe el total y devuelve otro objeto. Quien llama reemplaza el estado si quiere. leerRemoto no llama a la red: recibe la función que sí lo hace. En clase, el doble devuelve 22 y 9. En un test, el doble puede devolver un error o una lista vacía sin abrir una conexión. La impureza sigue existiendo, pero queda en el borde, no dentro del cálculo.</aside>
+          </section>
         </section>
 
         <section>
